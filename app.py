@@ -9,10 +9,18 @@ from flask import Flask, flash, request, redirect, url_for, send_from_directory
 from werkzeug.utils import secure_filename
 
 import os
+import logging
+import datetime
+
 import matplotlib.pyplot as plt
 import numpy as np
 from plot_image import plot_value_array, plot_image
 from PIL import Image
+
+# import DB
+from cassandra.cluster import Cluster
+from cassandra.query import SimpleStatement
+
 # # 读取文图像文件
 # (train_images, train_labels), (test_images, test_labels) = keras.datasets.fashion_mnist.load_data()
 def predicting(filename):
@@ -49,11 +57,19 @@ def predicting(filename):
     plot_value_array(prediction[0])
     plt.savefig('./temp/' + filename.rsplit('.', 1)[0].lower() + '.jpg')
 
-    return predict_label, class_names[predict_label]
+    return str(predict_label) + '_' + class_names[predict_label]
 
 
 UPLOAD_FOLDER = './temp'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif', 'bmp'}
+IP_ADRESS = ['192.168.99.100']
+KEYSPACE = "mykeyspace"
+TABLES = ['predictions',]
+
+# 连接数据库
+cluster = Cluster(contact_points=IP_ADRESS,port=9042)
+session = cluster.connect()
+session.execute('USE %s' % KEYSPACE)
 
 # 新建flask类的实例
 app = Flask(__name__)
@@ -86,8 +102,8 @@ def upload_file():
     <!doctype html>
     <html>
     <title>Upload new File</title>
-    <h1>Upload A Fashion Minist Image</h1>
-    <p>(Only images with <b>['png', 'jpg', 'jpeg', 'gif', 'bmp']</b> format are permitted)</p>
+    <h1>Upload An Image</h1>
+    <p>(Only permitted with <b>['png', 'jpg', 'jpeg', 'gif', 'bmp']</b> format)</p>
     <form method=post enctype=multipart/form-data>
       <input type=file name=file>
       <input type=submit value=Upload>
@@ -95,9 +111,13 @@ def upload_file():
     </html>
     '''
 
+
+
 @app.route('/uploads/<filename>')
 def uploaded_file(filename):
-    predicting(filename)
+    pr = '\'' + predicting(filename) + '\''
     na = filename.rsplit('.', 1)[0].lower() + '.jpg'
-    # return str(label) + "\n" + na
+    dt =  '\'' + str(datetime.datetime.now()) + '\''
+    session.execute('INSERT INTO {} (datetime, filename, prediction)VALUES ({}, {}, {})'.format(TABLES[0], dt, '\''+na+'\'', pr))
+
     return send_from_directory(app.config['UPLOAD_FOLDER'], na)

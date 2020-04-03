@@ -1,0 +1,18 @@
+[
+    // AllowAllAuthenticator
+    {
+        "name": "BD-cassandra",
+        "contactPoints": ["192.168.99.100"]
+    }
+    //,
+    //PasswordAuthenticator
+    // {
+    //     "name": "Cluster PasswordAuthenticator",
+    //     "contactPoints": ["127.0.0.1"],
+    //     "authProvider": {
+    //         "class": "PasswordAuthenticator",
+    //         "username": "yourUsername",
+    //         "password": "yourPassword"
+    //     }
+    // }
+]
