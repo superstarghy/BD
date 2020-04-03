@@ -8,7 +8,7 @@ The project was done by Gao Hanyuan under the guidance of [Fan Zhang](http://www
 
 ## App: Classification
 We borrow datas and algorithm from [tensorflow](https://tensorflow.google.cn/) to trains a neural network model to classify images of clothing, details showed in the tutorial of [tensorflow.keras](https://tensorflow.google.cn/tutorials/keras/classification) or in `model.py`. Here is an example of the result:
-![example](./images/example.jpg)
+![example](images/example.jpg)
 The `model.py` use the APIs and datas (the Fashion MINIST dataset), from tensorflow.keras. It create, build and train a network, then save the final model into `my_model.h5`.
 
 ## Web API
@@ -23,10 +23,10 @@ def hello_world():
 ```
 We load our model above and use it to do prediction. The app recieve a file of image from the Web font end. As an example:  
   
-![upload](./images/upload.png)
+![upload](images/upload.png)
 In the back end, we use our app to make prediction and return the visualized result.
   
-![result](./images/result1.png)
+![result](images/result1.png)
 
 ## Database
 We choose [cassandra](https://cassandra.apache.org/) as our database, for its light weight and good distributability. More convevnient, cassandra has been pakaged into [cassandra-docker](https://hub.docker.com/_/cassandra/). Get and run it with few commands.
@@ -38,7 +38,7 @@ docker run -it --network some-network --rm cassandra cqlsh some-cassandra
 ```
 There is also some useful tools like cassandra workbench to help operate on cassandra. VS code has a plugin tool:  
   
-![creattable](./images/create_table.png)
+![creattable](images/create_table.png)
 
 Python acts well to connect with cassandra by import the model [cassandra-driver](https://docs.datastax.com/en/developer/python-driver/3.22/).  
   
@@ -51,7 +51,7 @@ Python acts well to connect with cassandra by import the model [cassandra-driver
  ```
 Or in workbench  
   
-![cqlselect](./images/cqlselect.png)
+![cqlselect](images/cqlselect.png)
 
 ## Build and run an image in docker
 At this part, we pakage our app into an image and run a container in docker. Since we have already run the database server in docker, there will be two containers communicating with each other in the end. Docker has a tutorial of [build and run your own image](https://docs.docker.com/get-started/part2/).  
