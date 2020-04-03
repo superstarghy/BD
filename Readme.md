@@ -42,7 +42,8 @@ There is also some useful tools like cassandra workbench to help operate on cass
 
 Python acts well to connect with cassandra by import the model [cassandra-driver](https://docs.datastax.com/en/developer/python-driver/3.22/).  
   
- `DB.py` shows how to connect to a database and run several cql queries. Be careful about the address and port map of your server, which is the key to successful connection.  
+ `DB.py` shows how to connect to a database and run several cql queries. Be careful about the address and port map of your server, which is the key to successful connection. In windows, docker run in a virtual machine, thus the IP address should be the IP of the machine, not the address of Host.  
+ ![dockerIP](images/dockerIP.png)
  `app.py` contains how the app connect and insert datas to an existing database.
 
  The app inserts time, filename and the result into the database. We can inspect the result by cql query in cqlsh runned in docker.
