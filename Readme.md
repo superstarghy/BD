@@ -23,10 +23,10 @@ def hello_world():
 ```
 We load our model above and use it to do prediction. The app recieve a file of image from the Web font end. As an example:  
   
-![upload](images/upload.png)
+![upload](images/upload.PNG)
 In the back end, we use our app to make prediction and return the visualized result.
   
-![result](images/result1.png)
+![result](images/result1.PNG)
 
 ## Database
 We choose [cassandra](https://cassandra.apache.org/) as our database, for its light weight and good distributability. More convevnient, cassandra has been pakaged into [cassandra-docker](https://hub.docker.com/_/cassandra/). Get and run it with few commands.
@@ -38,7 +38,7 @@ docker run -it --network some-network --rm cassandra cqlsh some-cassandra
 ```
 There is also some useful tools like cassandra workbench to help operate on cassandra. VS code has a plugin tool:  
   
-![creattable](images/create_table.png)
+![creattable](images/create_table.PNG)
 
 Python acts well to connect with cassandra by import the model [cassandra-driver](https://docs.datastax.com/en/developer/python-driver/3.22/).  
   
