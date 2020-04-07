@@ -13,3 +13,4 @@ RUN pip install -r requirements.txt
 # Run app.py when the container launches
 CMD ["export", "FLASK_APP=hello.py"]
 CMD ["flask", "run"]
+

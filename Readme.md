@@ -1,6 +1,6 @@
 # Introduction
 
-This project is a lab about **BigData Virtualization** and **Learning**, using the tech of **Containerization**. The lab build a simple web app based on the framework of python & flask & cassandra, which realizes the classification of images of clothing. Then it build the app into a container by means of [docker](https://www.docker.com/).  
+This project is a lab about **BigData Virtualization** and **Learning**, using the tech of **Containerization**. The lab built a simple web app based on the framework of python & flask & cassandra, which realized the classification of images of clothing. Then it built the app into a container by means of [docker](https://www.docker.com/).  
   
 The project was done by Gao Hanyuan under the guidance of [Fan Zhang](http://www.mit.edu/~f_zhang/)!
 
@@ -29,7 +29,7 @@ In the back end, we use our app to make prediction and return the visualized res
 ![result](images/result1.PNG)
 
 ## Database
-We choose [cassandra](https://cassandra.apache.org/) as our database, for its light weight and good distributability. More convevnient, cassandra has been pakaged into [cassandra-docker](https://hub.docker.com/_/cassandra/). Get and run it with few commands.
+We choose [cassandra](https://cassandra.apache.org/) as our database, for its light weight and good distributability. More convenient, Cassandra has been packaged into [cassandra-docker](https://hub.docker.com/_/cassandra/). Get and run it with few commands.
 
 ```
 docker pull cassandra
@@ -55,7 +55,7 @@ Or in workbench
 ![cqlselect](images/cqlselect.PNG)
 
 ## Build and run an image in docker
-At this part, we pakage our app into an image and run a container in docker. Since we have already run the database server in docker, there will be two containers communicating with each other in the end. Docker has a tutorial of [build and run your own image](https://docs.docker.com/get-started/part2/).  
+At this part, we package our app into an image and run a container in docker. Since we have already run the database server in docker, there will be two containers communicating with each other in the end. Docker has a tutorial of [build and run your own image](https://docs.docker.com/get-started/part2/).  
   
 The issue is about writing `dockerfile`
 ```dockerfile
@@ -77,12 +77,12 @@ EXPOSE 5000
 CMD ["export", "FLASK_APP=hello.py"]
 CMD ["flask", "run"]
 ```
-Use docker command to bulid and run your images. Docker will run the instructions in dockerfile one by one and build an image. 
+Use docker command to build and run your images. Docker will run the instructions in dockerfile one by one and build an image. 
 ```
 docker build -t bdroject:latest .
 ```
 Notice that `requirement.txt` contains all dependencies of python models. This file can be easily build by running a pip cmd
-in the virtual envirnment of your project:
+in the virtual environment of your project:
 ```sh
 pip freezing>requirements.txt
 ```
@@ -91,3 +91,4 @@ Then launch a container of an image. The CMD part of dockerfile will be carried 
 export FLASK_APP=hello.py
 flask run
 ```
+Finally, the application run in a container!

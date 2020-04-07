@@ -59,7 +59,6 @@ def predicting(filename):
 
     return str(predict_label) + '_' + class_names[predict_label]
 
-
 UPLOAD_FOLDER = './temp'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif', 'bmp'}
 IP_ADRESS = ['192.168.99.100']
