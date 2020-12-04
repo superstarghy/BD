@@ -7,7 +7,7 @@ The project was done by Gao Hanyuan under the guidance of [Fan Zhang](http://www
 ---
 
 ## App: Classification
-We borrow datas and algorithm from [tensorflow](https://tensorflow.google.cn/) to trains a neural network model to classify images of clothing, details showed in the tutorial of [tensorflow.keras](https://tensorflow.google.cn/tutorials/keras/classification) or in `model.py`. Here is an example of the result:
+We borrow datas and algorithm from [tensorflow](https://tensorflow.google.cn/) to train a neural network model to classify images of clothing, details showed in the tutorial of [tensorflow.keras](https://tensorflow.google.cn/tutorials/keras/classification) or in `model.py`. Here is an example of the result:
 ![example](images/example.jpg)
 The `model.py` use the APIs and datas (the Fashion MINIST dataset), from tensorflow.keras. It create, build and train a network, then save the final model into `my_model.h5`.
 
